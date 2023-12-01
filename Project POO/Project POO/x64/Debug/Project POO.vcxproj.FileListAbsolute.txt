@@ -1,0 +1,3 @@
+C:\Users\valen\Documents\CESI\CESI A2\Bloc Conception et programmation Objet\Projet\Project POO\Project POO\x64\Debug\Project POO.vcxproj.AssemblyReference.cache
+C:\Users\valen\Documents\CESI\CESI A2\Bloc Conception et programmation Objet\Projet\Project POO\Project POO\x64\Debug\ProjectPOO.MyForm.resources
+C:\Users\valen\Documents\CESI\CESI A2\Bloc Conception et programmation Objet\Projet\Project POO\Project POO\x64\Debug\Project POO.vcxproj.GenerateResource.cache
