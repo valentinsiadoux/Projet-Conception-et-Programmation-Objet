@@ -15,11 +15,6 @@ void NS_Composants::Article::setStock(int stock_article)
     this->stock = stock_article;
 }
 
-void NS_Composants::Article::setRemise(float remise_article)
-{
-    this->promo = remise_article;
-}
-
 void NS_Composants::Article::setPrixHT(float prix_article_ht)
 {
     this->prix_ht = prix_article_ht;
@@ -53,11 +48,6 @@ System::String^ NS_Composants::Article::getNom()
 int NS_Composants::Article::getStock()
 {
     return stock;
-}
-
-float NS_Composants::Article::getRemise()
-{
-    return promo;
 }
 
 float NS_Composants::Article::getPrixHT()
@@ -97,10 +87,10 @@ System::String^ NS_Composants::Article::Modifier()
 
 System::String^ NS_Composants::Article::Supprimer()
 {
-    return "A";
+    return  "A";
 }
 
 System::String^ NS_Composants::Article::Afficher()
 {
-    return "A";
+    return "SELECT * FROM Article;";
 }

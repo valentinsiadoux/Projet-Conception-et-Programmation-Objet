@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 using namespace System;
 namespace NS_Composants
 {
@@ -31,4 +31,4 @@ namespace NS_Composants
 		String^ getVille(void);
 		int getIdPersonne(void);
 	};
-}
+}*/

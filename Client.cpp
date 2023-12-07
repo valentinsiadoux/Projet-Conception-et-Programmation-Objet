@@ -1,5 +1,4 @@
-#include "pch.h"
-#include "Adresse.h"  
+ï»¿#include "pch.h"
 
 using namespace NS_Composants;
 
@@ -11,6 +10,16 @@ void Client::setDateNaissance(String^ date_anniversaire)
 String^ Client::getDateNaissance()
 {
     return this->anniversaire;
+}
+
+void Client::setPremierAchat(String^ PremierAchat)
+{
+    this->PremierAchat = PremierAchat;
+}
+
+String^ Client::getPremierAchat()
+{
+    return this->PremierAchat;
 }
 
 void Client::setAdresseLivraison(String^ adresse_livraison)
@@ -43,22 +52,67 @@ void Client::setIdClient(int id_client)
     this->id_client = id_client;
 }
 
+void Client::setAdresse(String^ Adresse)
+{
+    if (Adresse != "")
+        this->adresse = Adresse;
+}
+
+void Client::setcomplement(String^ Complement)
+{
+    // Vous pouvez ajouter des vï¿½rifications supplï¿½mentaires si nï¿½cessaire
+    this->complement = Complement;
+}
+
+void Client::setCp(String^ Cp)
+{
+    if (Cp != "")
+        this->cp = Cp;
+}
+
+String^ Client::getAdresse(void)
+{
+    return this->adresse;
+}
+
+String^ Client::getcomplement(void)
+{
+    return this->complement;
+}
+
+String^ Client::getCp(void)
+{
+    return this->cp;
+}
+
+void Client::setVille(String^ Ville)
+{
+    if (Ville != "")
+        this->ville = Ville;
+}
+
+String^ Client::getVille(void)
+{
+    return this->ville;
+}
+
 String^ Client::Creer()
 {
-    // La requête d'insertion générique
-    String^ query = "INSERT INTO Client (Nom, Prenom, Anniversaire, AdresseLivraison, AdresseFacturation) "
-        "VALUES ('" + this->nom + "', '" + this->prenom + "', '" + this->anniversaire + "', '" + this->adresse_livraison + "', '" + this->adresse_facturation + "');";
+    // Mettez Ã  jour votre requÃªte d'insertion pour inclure les nouvelles colonnes
+    String^ query = "INSERT INTO Client (Nom, Prenom, DateNaissance, PremierAchat, AdresseLivraison, AdresseFacturation) "
+        "VALUES ('" + this->nom + "', '" + this->prenom + "', '" + this->anniversaire + "', '" + this->PremierAchat + "', '" + this->adresse_livraison + "', '" + this->adresse_facturation + "');";
 
     return query;
 }
 
 String^ Client::Modifier()
 {
-    // La requête de modification générique
+    // Mettez Ã  jour votre requÃªte de modification pour inclure les nouvelles colonnes
     String^ query = "UPDATE Client SET "
         "Nom = '" + this->nom + "', "
         "Prenom = '" + this->prenom + "', "
-        "Anniversaire = '" + this->anniversaire + "', "
+        "DateNaissance = '" + this->anniversaire + "', "
+        "PremierAchat = '" + this->PremierAchat + "', "
         "AdresseLivraison = '" + this->adresse_livraison + "', "
         "AdresseFacturation = '" + this->adresse_facturation + "' "
         "WHERE IDClient = " + this->id_client + ";";
@@ -68,7 +122,7 @@ String^ Client::Modifier()
 
 String^ Client::Supprimer()
 {
-    // La requête de suppression générique
+    // La requÃªte de suppression gÃ©nÃ©rique
     return "DELETE FROM Client WHERE IDClient = " + this->id_client + ";";
 
    

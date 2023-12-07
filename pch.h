@@ -9,11 +9,10 @@
 
 using namespace System;
 #include "Personne.h"
-#include "Personnel_.h"
 #include "CLcad.h"
 #include "Client.h"
 #include "Commande.h"
-#include "Adresse.h"
+//#include "Adresse.h"
 #include "Article.h"
 #include "membre.h"
 #include "GestionMembre.h"

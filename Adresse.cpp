@@ -1,4 +1,4 @@
-﻿#include "Adresse.h"
+﻿/*#include "Adresse.h"
 
 namespace NS_Composants
 {
@@ -104,4 +104,4 @@ namespace NS_Composants
 	{
 		return this->id_personne;
 	}
-}
+}*/

@@ -14,12 +14,12 @@ namespace NS_SVC
 	private:
 		NS_Composants::CLCAD^ cad;
 		NS_Composants::Client^ client;
-		NS_Composants::Adresse^ adresse;
 		DataSet^ ds;
 	public:
 		ServiceClient(void);
 		DataSet^ listeClients(String^);
-		void ajouter(String^, String^, array<String^>^);
+		array<int>^ GetAvailableIDs();
+		void ajouter(array<String^>^);
 		void modifier(int, String^, String^, array<String^>^);
 		void supprimer(int);
 	};

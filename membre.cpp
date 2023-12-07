@@ -39,19 +39,19 @@ int membre::getIdSupHierarchique() {
 
 //A completer
 String^ membre::Creer() {
-    // Supposons que les valeurs nécessaires sont déjà définies dans les membres de la classe.
-    // Cette requête insère un nouveau personnel dans la table TB_PERSONNEL.
-
-    return "INSERT INTO TB_PERSONNEL (nom, prenom, date_embauche, id_sup_hierarchique) VALUES ('" +
+    return "INSERT INTO Personnelle (nom, prenom, date_embauche, id_sup_hierarchique) VALUES ('" +
         this->getNom() + "', '" + this->getPrenom() + "', '" +
-        this->getDateEmbauche() + "', " + this->getIdSupHierarchique() + ");";
+        Convert::ToDateTime(this->getDateEmbauche()) + "', " + this->getIdSupHierarchique() + "); "
+        + "SELECT @@IDENTITY;";
 }
+
+
 
 String^ membre::Modifier() {
     // Supposons que les valeurs nécessaires sont déjà définies dans les membres de la classe.
-    // Cette requête met à jour les informations d'un personnel dans la table TB_PERSONNEL.
+    // Cette requête met à jour les informations d'un personnel dans la table Personnelle.
 
-    return "UPDATE TB_PERSONNEL SET nom = '" + this->getNom() +
+    return "UPDATE Personnelle SET nom = '" + this->getNom() +
         "', prenom = '" + this->getPrenom() +
         "', date_embauche = '" + this->getDateEmbauche() +
         "', id_sup_hierarchique = " + this->getIdSupHierarchique() +
@@ -60,15 +60,17 @@ String^ membre::Modifier() {
 
 String^ membre::Supprimer() {
     // Supposons que seul l'ID du personnel est nécessaire pour la suppression.
-    // Cette requête supprime un personnel de la table TB_PERSONNEL.
+    // Cette requête supprime un personnel de la table Personnelle.
 
-    return "DELETE FROM TB_PERSONNEL WHERE id_personnel = " + this->getIdPersonnel() + ";";
+    return 
+        "DELETE FROM Personnelle " +
+        "WHERE(id_personnel = " + this->getIdPersonnel() + ");";
 }
 
 String^ membre::Afficher() {
     // Supposons que vous souhaitez simplement récupérer toutes les informations d'un personnel.
-    // Cette requête sélectionne toutes les colonnes de la table TB_PERSONNEL pour un personnel donné.
+    // Cette requête sélectionne toutes les colonnes de la table Personnelle pour un personnel donné.
 
-    return "SELECT * FROM TB_PERSONNEL;";
+    return "SELECT * FROM Personnelle;";
 }
 

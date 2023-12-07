@@ -1,5 +1,6 @@
 #pragma once
 #include "pch.h"
+#include <list> // Include this line for List
 
 using namespace System::Data;
 
@@ -14,13 +15,13 @@ namespace NS_SVC
 	private:
 		NS_Composants::CLCAD^ cad;
 		NS_Composants::membre^ personnel;
-		NS_Composants::Adresse^ adresse;
 		DataSet^ ds;
 	public:
 		GestionMembre(void);
 		DataSet^ listemembre(String^);
-		void ajouter(String^, String^, array<String^>^);
-		void modifier(int, String^, String^, array<String^>^);
+		array<int>^ GetAvailableIDs();
+		void ajouter(array<String^>^);
+		void modifier(array<String^>^);
 		void supprimer(int);
 	};
 }

@@ -6,6 +6,8 @@ NS_SVC::ServiceArticle::ServiceArticle(void)
     this->Article = gcnew NS_Composants::Article();
 }
 
+
+
 System::Data::DataSet^ NS_SVC::ServiceArticle::selectAllArticle(System::String^ dataTableName)
 {
     System::String^ sql;
@@ -21,6 +23,8 @@ void NS_SVC::ServiceArticle::insertArticle(NS_Composants::Article^ Article)
     this->cad->actionRows(sql);
 }
 
+
+
 void NS_SVC::ServiceArticle::updateArticle(NS_Composants::Article^ Article)
 {
     System::String^ sql;
@@ -29,10 +33,10 @@ void NS_SVC::ServiceArticle::updateArticle(NS_Composants::Article^ Article)
     this->cad->actionRows(sql);
 }
 
-void NS_SVC::ServiceArticle::deleteArticle(NS_Composants::Article^ Article)
+void NS_SVC::ServiceArticle::deleteArticle(int idarticle)
 {
-    System::String^ sql;
-    this->Article = Article;
-    sql = this->Article->Supprimer();
-    this->cad->actionRows(sql);
+
+    this->Article->setIdArticle(idarticle);
+    this->cad->actionRows(this->Article->Supprimer());
+
 }

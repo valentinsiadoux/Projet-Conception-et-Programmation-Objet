@@ -7,7 +7,6 @@ namespace NS_SVC
     {
         this->cad = gcnew NS_Composants::CLCAD();
         this->personnel = gcnew NS_Composants::membre();
-        this->adresse = gcnew NS_Composants::Adresse();
     }
 
     DataSet^ GestionMembre::listemembre(String^ dataTableName)
@@ -18,38 +17,41 @@ namespace NS_SVC
         return this->ds;
     }
 
-    void GestionMembre::ajouter(String^ nom, String^ prenom, array<String^>^ lesAdresses)
+
+    void GestionMembre::ajouter(array<String^>^ lesPersonnels)
     {
-        int id;
-        int i;
-        this->personnel->setNom(nom);
-        this->personnel->setPrenom(prenom);
-        id = this->cad->actionRowsID(this->personnel->Creer());
-        for (i = 0; i < lesAdresses->Length - 2; i++) // Modification de la condition ici
-        {
-            this->adresse->setAdresse(lesAdresses[i]); i++;
-            this->adresse->setVille(lesAdresses[i]); i++;
-            this->adresse->setCp(lesAdresses[i]);
-            this->adresse->setIdPersonne(id);
-            this->cad->actionRows(this->adresse->INSERT());
-        }
+        this->personnel->setNom(lesPersonnels[2]);
+        this->personnel->setPrenom(lesPersonnels[1]);
+        this->personnel->setDateEmbauche(lesPersonnels[3]);
+        this->personnel->setIdSupHierarchique(Convert::ToInt32(lesPersonnels[4]));
+        int id = this->cad->actionRowsID(this->personnel->Creer());
     }
 
-    void GestionMembre::modifier(int id, String^ nom, String^ prenom, array<String^>^ lesAdresses)
+
+    array<int>^ GestionMembre::GetAvailableIDs()
     {
-        int i;
-        this->personnel->setIdPersonnel(id);
-        this->personnel->setNom(nom);
-        this->personnel->setPrenom(prenom);
-        this->cad->actionRows(this->personnel->Modifier());
-        for (i = 0; i < lesAdresses->Length - 2; i++) // Modification de la condition ici
+        System::Collections::ArrayList^ availableIDs = gcnew System::Collections::ArrayList();
+
+        this->ds = gcnew DataSet();
+        this->ds = this->cad->getRows(this->personnel->Afficher(), "LesPersonnels");
+
+        for each (DataRow ^ row in this->ds->Tables["LesPersonnels"]->Rows)
         {
-            this->adresse->setIdAdresse(Convert::ToInt32(lesAdresses[i])); i++;
-            this->adresse->setAdresse(lesAdresses[i]); i++;
-            this->adresse->setVille(lesAdresses[i]); i++;
-            this->adresse->setCp(lesAdresses[i]);
-            this->cad->actionRows(this->adresse->UPDATE());
+            int id = Convert::ToInt32(row["id_personnel"]);
+            availableIDs->Add(id);
         }
+
+        return (array<int>^)availableIDs->ToArray(Type::GetType("System.Int32"));
+    }
+
+
+    void GestionMembre::modifier(array<String^>^ lesPersonnels)
+    {
+        this->personnel->setNom(lesPersonnels[1]);
+        this->personnel->setPrenom(lesPersonnels[2]);
+        this->personnel->setDateEmbauche(lesPersonnels[3]);
+        this->personnel->setIdSupHierarchique(Convert::ToInt32(lesPersonnels[4]));
+        this->cad->actionRows(this->personnel->Modifier());
     }
 
     void GestionMembre::supprimer(int id)

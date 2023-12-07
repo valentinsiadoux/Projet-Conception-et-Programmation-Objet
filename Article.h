@@ -9,14 +9,13 @@ namespace NS_Composants {
 		String^ nature;
 		String^ nom_article;
 		String^ couleur_article;
-		float promo, prix_ht, taux_tva;
+		float prix_ht, taux_tva;
 
 	public:
 		//setter
 		void setNature(String^);
 		void setNom(String^);
 		void setStock(int);
-		void setRemise(float);
 		void setPrixHT(float);
 		void setReappro(int);
 		void setTauxTVA(float);
@@ -26,7 +25,6 @@ namespace NS_Composants {
 		//getter
 		String^ getNom();
 		int getStock();
-		float getRemise();
 		float getPrixHT();
 		int getQuantiteReapprovisionnement();
 		float getTauxTVA();
